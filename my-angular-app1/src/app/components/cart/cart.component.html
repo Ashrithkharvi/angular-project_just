@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" [routerLink]="['/']"><b>JUST NOW</b></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/destop" routerLinkActive="active" aria-current="page">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/cart">Cart</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/product" routerLinkActive="active" aria-current="page">product</a>
+          </li>
+        </ul>
+        
+      </div>
+    </div>
+  </nav>
+<div class="cart-container">
+    <h2>Shopping Cart</h2>
+    <div class="cart-items">
+      <div *ngFor="let item of cartItems" class="cart-item">
+        <img [src]="item.image" alt="{{ item.name }}" class="cart-item-image">
+        <div class="cart-item-details">
+          <h3>{{ item.name }}</h3>
+          <p class="cart-item-price">₹{{ item.price }}</p>
+
+          <button (click)="removeFromCart(item)">Remove</button>
+        </div>
+      </div>
+    </div>
+    <div class="cart-summary">
+      <h3>Total: ₹{{ totalPrice }}</h3>
+
+      <button class="checkout-button">Checkout</button>
+    </div>
+  </div>
+  

@@ -1,0 +1,46 @@
+<div class="background-container">
+  <div style="background-image: url('assets/image17.jpg'); background-size: cover; width: 1400px; height: 800px;">
+<div><br>
+
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="register-form">
+    <h2>Register</h2>
+  
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" id="username" formControlName="username" class="form-control"/>
+      <small *ngIf="registerForm.get('username')?.invalid && (registerForm.get('username')?.dirty || registerForm.get('username')?.touched)" class="error-message">
+        <div *ngIf="registerForm.get('username')?.errors?.['required']">Username is required</div>
+        <div *ngIf="registerForm.get('username')?.errors?.['minlength']">Username must be at least 3 characters long</div>
+      </small>
+    </div>
+  
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" formControlName="email" class="form-control"/>
+      <small *ngIf="registerForm.get('email')?.invalid && (registerForm.get('email')?.dirty || registerForm.get('email')?.touched)" class="error-message">
+        <div *ngIf="registerForm.get('email')?.errors?.['required']">Email is required</div>
+        <div *ngIf="registerForm.get('email')?.errors?.['email']">Enter a valid email</div>
+      </small>
+    </div>
+  
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" id="password" formControlName="password" class="form-control"/>
+      <small *ngIf="registerForm.get('password')?.invalid && (registerForm.get('password')?.dirty || registerForm.get('password')?.touched)" class="error-message">
+        <div *ngIf="registerForm.get('password')?.errors?.['required']">Password is required</div>
+        <div *ngIf="registerForm.get('password')?.errors?.['minlength']">Password must be at least 6 characters long</div>
+      </small>
+    </div>
+  
+    <div class="form-group">
+      <label for="confirmPassword">Confirm Password</label>
+      <input type="password" id="confirmPassword" formControlName="confirmPassword" class="form-control"/>
+      <small *ngIf="registerForm.errors?.['mismatch'] && (registerForm.get('confirmPassword')?.dirty || registerForm.get('confirmPassword')?.touched)" class="error-message">
+        <div>Passwords do not match</div>
+      </small>
+    </div>
+  
+    <button type="submit" class="btn-primary" [disabled]="registerForm.invalid">Register</button>
+    <div class="mt-2">you are allredy register? <a href="/login">login</a></div>
+  </form>
+  
